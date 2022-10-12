@@ -20,3 +20,70 @@ ggplot(data=mydata[mydata$carat<2.5,],
   geom_point(alpha=0.1) +
   geom_smooth()
 ```
+
+# Using variables in R
+```{r}
+A <- 10
+B <- 5
+C <- A + B
+C
+```
+```{r}
+var1 <- 2.5
+var2 <- 4
+result <- var1 / var2
+result
+answer <- sqrt(var2)
+answer
+```
+```{r}
+greeting <- "Hello"
+name <- "Bob"
+message <- paste(greeting, name)
+message
+```
+
+# Sample logical variables and operators
+```{r}
+4 < 5
+result <- 4 < 5
+typeof(result)
+```
+```{r}
+result2 <- ! TRUE
+result2
+```
+```{r}
+result | result2
+```
+```{r}
+result & result2
+```
+```{r}
+isTRUE(result)
+```
+
+# The While loop
+```{r}
+counter <- 1
+while(counter < 12){
+  print(counter)
+  counter <- counter + 1
+}
+```
+
+# The for loop
+```{r}
+for(i in 1:5){
+  print("Hello R")
+}
+```
+```{r}
+for(i in 5:10){
+  print("Hello R")
+}
+```
+
+# The if statement
+
+
