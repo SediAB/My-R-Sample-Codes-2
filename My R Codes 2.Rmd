@@ -796,3 +796,56 @@ qplot(data=merged2013, x=Fertility.Rate, y=Life.Exp,
       )
 
 ```
+# Advanced visualizations using ggplot2
+```{r}
+movies <- read.csv(file.choose())
+head(movies)
+colnames(movies) <- c("Film", "Genre", "CriticRating", "AudienceRating", "BudgetMillions", "Year")
+head(movies)
+tail(movies)
+str(movies)
+factor(movies$Year)
+summary(movies)
+str(movies)
+
+library(ggplot2)
+q <- ggplot(data=movies, aes(x=CriticRating, y=AudienceRating, colour=Genre, size=BudgetMillions)) +
+geom_point()
+
+q + geom_point(aes(size=CriticRating)) # Overriding aes
+
+q + geom_point(aes(x=BudgetMillions)) +
+  xlab("Budget Millions $$$")
+
+q + geom_line(size=1)
+
+q + geom_point(colour="DarkGreen") # Set the color. Don't use aes
+
+q + geom_point(aes(size=BudgetMillions)) # Mapping
+
+q + geom_point(size=10) # Setting
+
+# Histogram
+s <- ggplot(data=movies, aes(x=BudgetMillions))
+s + geom_histogram(binwidth=10, aes(fill=Genre), colour="Black")
+
+# Density chart
+s + geom_density(aes(fill=Genre), position="stack")
+
+# Layers
+t <- ggplot(data=movies)
+t + geom_histogram(binwidth=10, 
+                   aes(x=AudienceRating),
+                   fill="White", colour="Blue")
+
+# geom_smooth
+u <- ggplot(data=movies, aes(x=CriticRating, y=AudienceRating,
+                             colour=Genre))
+u + geom_point() + geom_smooth(fill=NA)
+
+# Boxplots
+u <- ggplot(data=movies, aes(x=Genre, y=AudienceRating,
+            colour=Genre))
+u + geom_boxplot(size=1.2)
+
+```
