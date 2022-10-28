@@ -848,4 +848,88 @@ u <- ggplot(data=movies, aes(x=Genre, y=AudienceRating,
             colour=Genre))
 u + geom_boxplot(size=1.2)
 
+# Using facets
+library(ggplot2)
+# Histogram and facets
+v <- ggplot(data=movies, aes(x=BudgetMillions))
+v + geom_histogram(binwidth=10, aes(fill=Genre),
+                   colour="Black") +
+  facet_grid(Genre~., scales="free")
+
+# scatterplots and facets
+w <- ggplot(data=movies, aes(x=CriticRating, y=AudienceRating,
+                             colour=Genre))
+w + geom_point(size=3) + 
+  facet_grid(Genre~.)
+
+w + geom_point(aes(size=BudgetMillions)) +
+  geom_smooth(fill=NA) +
+  facet_grid(Genre~Year)
+
+# Coordinate
+# Limits
+m <- ggplot(data=movies, aes(CriticRating, y=AudienceRating,
+                             size=BudgetMillions,
+                             colour=Genre))
+m + geom_point()
+m + geom_point() +
+  xlim(50,100) +
+  ylim(50,100)
+# Doesn't always work well
+n <- ggplot(data=movies, aes(x=BudgetMillions))
+n + geom_histogram(binwidth = 10, aes(fill=Genre), colour="Black") +
+  ylim(0,50)
+
+# Instead zoom
+n + geom_histogram(binwidth = 10, aes(fill=Genre), colour="Black") +
+  coord_cartesian(ylim = c(0,50))
+ 
+w + geom_point(aes(size=BudgetMillions)) +
+  geom_smooth(fill=NA) +
+  facet_grid(Genre~Year) +
+  coord_cartesian(ylim = c(0,100))
+
+# Adding a theme
+o <- ggplot(data=movies, aes(x=BudgetMillions))
+h <- o + geom_histogram(binwidth = 10, aes(fill=Genre), colour="Black")
+h + xlab("Money Axis") +
+  ylab("Number of Movies") +
+  ggtitle("Movie Budget Distribution") +
+  theme(axis.title.x = element_text(colour = "DarkGreen", size = 30), axis.title.y = element_text(colour = "Red", size = 30),
+        axis.text.x = element_text(size = 20),
+        axis.text.y = element_text(size = 20),
+        legend.title = element_text(size = 30),
+        legend.text = element_text(size = 20),
+        legend.position = c(1,1),
+        legend.justification = c(1,1),
+        plot.title = element_text(colour = "DarkBlue",
+                                  size=40))
+```
+
+```{r}
+df <- data.frame(a = c(1:10), b = c(11:20))
+df
+myFunc <- function(x,y){
+  x*y
+}
+for(i in 1:nrow(df)){
+  temp <- myFunc(df[i,"a"], df[i, "b"])
+  if(temp>100){
+    print (c(i, temp))
+  }
+}
+
+```
+```{r}
+df <- data.frame(a = c(1:10), b = c(11:20))
+myFunc <- function(x,y){
+  x*y
+}
+sodi <- function(j){
+ 11-j 
+}
+for(i in 1:nrow(df)){
+  temp <- myFunc(df[i,"a"], df[sodi(i), "b"])
+  print (c(i, temp))
+}
 ```
