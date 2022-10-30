@@ -796,6 +796,7 @@ qplot(data=merged2013, x=Fertility.Rate, y=Life.Exp,
       )
 
 ```
+
 # Advanced visualizations using ggplot2
 ```{r}
 movies <- read.csv(file.choose())
@@ -1065,7 +1066,6 @@ for(i in 1:n)
   a[i+1] = 2*a[i]
 }
 ```
-
 ```{r}
 for(i in 1:7)
 {
@@ -1186,7 +1186,6 @@ while(i<=2){
     i<-i+1
 }
 ```
-
 ```{r}
 x<-1
 while(x<2){
@@ -1194,7 +1193,6 @@ while(x<2){
   x
 }
 ```
-
 ```{r}
 n <- 20
 myvec <- c(head=0L, tail=1L)
@@ -1204,4 +1202,30 @@ for(i in 1:n){
 }
 coin
 
+```
+```{r}
+for(i in 1:3){
+  for(n in 1:3){
+  print(c(i,n))
+  }
+  
+}
+```
+```{r}
+for(i in 1:ncol(iris)){
+  for(j in row(iris)){
+    print(iris[j,i])
+  }
+}
+```
+```{r}
+n <- 20
+n
+myvec <- c(heads=1, tails=0)
+myvec
+coinoutcome <- vector(length = n, mode = "integer")
+for(i in 1:n){
+  coinoutcome[i] <- sample(myvec, 1)
+}
+print(coinoutcome)
 ```
