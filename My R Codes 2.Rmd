@@ -1229,3 +1229,18 @@ for(i in 1:n){
 }
 print(coinoutcome)
 ```
+# NA and which command
+```{r}
+x <- read.csv(file.choose())
+x[1:2, ]
+nrow(x)
+x[152:153, ]
+x[47, ]
+
+sum(is.na(x$Ozone))
+mean(x$Ozone, na.rm = TRUE)
+mean(x[which(x$Ozone >31 & x$Temp > 90),]$Solar.R)
+mean(x[which(x$Month == 6),]$Temp)
+max(x[which(x$Month == 5),]$Ozone, na.rm = TRUE)
+?which
+```
